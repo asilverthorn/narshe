@@ -25,4 +25,5 @@ Docker:
 build with  `docker build --tag=narshe .`
 run locally with `docker run --rm -p5000:5000 -e PORT=5000 narshe:latest`
 deploy with `gcloud run deploy --source .`
+-- may need to set CLOUDSDK_PYTHON env
 also useful: `docker run --rm -it --entrypoint bash narshe:latest`

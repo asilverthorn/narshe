@@ -1,6 +1,6 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
-FROM python:3.12-slim AS compile-image
+FROM python:3.9-slim AS compile-image
 
 RUN echo 'deb http://deb.debian.org/debian testing main' >> /etc/apt/sources.list \
     && apt-get update && apt-get install -y --no-install-recommends -o APT::Immediate-Configure=false gcc python3-dev
@@ -14,7 +14,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # per pythonspeed.com, we'll now get the pre-built artifacts only
-FROM python:3.12-slim AS build-image
+FROM python:3.9-slim AS build-image
 COPY --from=compile-image /opt/venv /opt/venv
 
 # Copy local code to the container image.
